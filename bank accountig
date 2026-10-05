@@ -1,0 +1,75 @@
+package Main;
+
+
+class BankAccount {
+
+    private final String accountNumber;
+    private final String customerName;
+    private double balance;
+
+
+    public BankAccount(String accountNumber,
+                       String customerName,
+                       double balance) {
+
+        this.accountNumber = accountNumber;
+        this.customerName = customerName;
+        setBalance(balance);
+    }
+
+
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+
+    public double getBalance() {
+        return balance;
+    }
+
+
+    public final void setBalance(double balance) {
+        if (balance < 0) {
+            throw new IllegalArgumentException("Balance cannot be negative.");
+        }
+        this.balance = balance;
+    }
+
+
+    public void displayAccount() {
+        System.out.println("Account Number: " + accountNumber);
+        System.out.println("Customer Name: " + customerName);
+        System.out.println("Balance: $" + balance);
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        BankAccount account1 =
+                new BankAccount("ACC001", "Ahmed", 500);
+
+        BankAccount account2 =
+                new BankAccount("ACC002", "Ali", 1000);
+
+        account1.displayAccount();
+        System.out.println();
+
+        account2.displayAccount();
+
+
+        System.out.println("\nAccount 1 Balance: $"
+                + account1.getBalance());
+
+
+        account1.setBalance(750);
+
+        System.out.println("Updated Balance: $"
+                + account1.getBalance());
+    }
+}
